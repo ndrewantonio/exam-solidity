@@ -4,13 +4,19 @@
   "description": "A smart contract for exam",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "hardhat run scripts/deploy.ts --network \"lisk-sepolia\"",
+    "set:private-key": "hardhat vars set PRIVATE_KEY",
+    "clean": "npx hardhat clean",
+    "compile": "npx hardhat compile"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@openzeppelin/contracts": "^5.2.0",
+    "@openzeppelin/contracts": "^5.3.0",
+    "@openzeppelin/contracts-upgradeable": "^5.3.0",
+    "dotenv": "^16.5.0",
     "hardhat": "^2.22.18"
   },
   "devDependencies": {

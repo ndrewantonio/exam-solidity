@@ -1,12 +1,15 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.20;
 
 import "../enums/ExamEnums.sol";
 
 library ExamStructs {
-    struct ExamConfig {
+    struct AddressConfig {
         address initialOwner;
         address examAddress;
+    }
+
+    struct ExamConfig {
         // Exam metadata
         string examCode;
         string examTitle;
@@ -25,23 +28,31 @@ library ExamStructs {
         string tokenSymbol;
     }
 
-    struct ExamCreationConfig {
-        address factoryAddress;
-        address idrxTokenAddress;
+    struct Exam {
+        AddressConfig addressConfig;
         ExamConfig examConfig;
         TokenConfig tokenConfig;
     }
 
-    struct ExamHistory {
-        ExamConfig examConfig;
+    // for exam that never been submitted
+    struct AvailableExam {
+        Exam exam;
         ExamEnums.ExamStatus status;
     }
 
     struct ExamResult {
-        uint256 score;
-        uint256 correctAnswers;
-        string submittedAt;
         string timeTaken;
+        string submittedAt;
+        uint256 correctAnswers;
+        uint256 score;
+    }
+
+    struct ExamHistory {
+        address examAddress;
+        string examCode;
+        string examTitle;
+        string examDescription;
+        ExamResult examResult;
         ExamEnums.ExamStatus status;
     }
 }
